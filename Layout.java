@@ -61,7 +61,7 @@ public class Layout extends JFrame {
 		
 		//configura e cria o segundo btn
 		button[1].setBounds(100,206, 200, 40);
-		button[1].setText("INSTRUÇÔES");
+		button[1].setText("INSTRUÇÕES");
 		getContentPane().add(button[1]);
 		
 		//configura e cria o terceiro btn
