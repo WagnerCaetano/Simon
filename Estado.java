@@ -1,0 +1,3 @@
+public enum Estado { PRETO, BRANCO, 
+    AZUL, VERMELHO, AMARELO,
+     LARANJA, VERDE, CINZA, ROXO}
