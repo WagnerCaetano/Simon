@@ -5,7 +5,8 @@ import java.awt.event.*;
 class Botao extends JButton{
 
 private Cor cores;
-private static int tamanho = 9;
+private static int tamanho = 100;
+
 
 public Cor getCor()
 {
@@ -17,10 +18,10 @@ public void setCor(Cor e)
     this.cores = e;
 }
 
-public Botao(Cor e)
+public Botao()
 {
     super();
-    cores = e;
+    cores = Cor.EMPTY;
 }
 
 public Dimension getMaximumSize()
@@ -43,17 +44,17 @@ protected void paintComponent(Graphics g)
     super.paintComponent(g);
     Graphics2D e = (Graphics2D)g;
 
-    switch(estado)
+    switch(cores)
     {
-        case Cor.AZUL: e.setColor(Color.BLUE); break;
-        case Cor.VERMELHO: e.setColor(Color.RED); break;
-        case Cor.AMARELO: e.setColor(Color.YELLOW); break;
-        case Cor.LARANJA: e.setColor(Color.ORANGE); break;
-        case Cor.VERDE: e.setColor(Color.GREEN); break;
-        case Cor.CINZA: e.setColor(Color.GRAY); break;
-        case Cor.ROXO: e.setColor(Color.PURPLE); break;
-        case Cor.BRANCO: e.setColor(Color.WHITE); break;
-        case Cor.PRETO: e.setColor(Color.BLACK); break;
+        case AZUL: e.setColor(Color.BLUE); break;
+        case VERMELHO: e.setColor(Color.RED); break;
+        case AMARELO: e.setColor(Color.YELLOW); break;
+        case LARANJA: e.setColor(Color.ORANGE); break;
+        case VERDE: e.setColor(Color.GREEN); break;
+        case CINZA: e.setColor(Color.GRAY); break;
+        case ROXO: e.setColor(Color.PINK); break;
+        case BRANCO: e.setColor(Color.WHITE); break;
+        case PRETO: e.setColor(Color.BLACK); break;
     }
     e.fillRect(0, 0, tamanho, tamanho);
     }
