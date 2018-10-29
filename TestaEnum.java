@@ -9,9 +9,6 @@ public class TestaEnum {
 
 	public static void main(String[] args) {
 		
-
-	
-		
 		
 	}
 	

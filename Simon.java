@@ -8,20 +8,23 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Simon extends JFrame implements ActionListener{
 	
-	private Botao[][] botao;//nome da matriz onde ficara os botões
+	private Botao[][] botao;//nome da matriz onde ficara os botï¿½es
 	static ArrayList<Cor> colors = new  ArrayList<>();//criando um array list para guarda as cores sorteadas
+	private Tabuleiro jogo;
+	private int jogadas;
 	//int igual[];
 	//para que eu consiga sortear a cor terei q fazer uma 'copia' do enum para acessar 
-	//sua posição e seu texto
-	//private Cor cores[] = Cor.values();//copia todas as cores da clase 'Cor' para nas proximas versões poder-mos sortear os btn ou as cores.
+	//sua posiï¿½ï¿½o e seu texto
+	//private Cor cores[] = Cor.values();//copia todas as cores da clase 'Cor' para nas proximas versï¿½es poder-mos sortear os btn ou as cores.
 	//igual = new int[9];//validacao para nao colocar cores iguais
 	//int diferentes=0;//enche o vetor 
 	//int ultimoValor;
 	//intacia da classe Random para sortear as cores 
-	//Random sortear = new Random();//para sortar numeros int para sortear cores para proximas versões
+	//Random sortear = new Random();//para sortar numeros int para sortear cores para proximas versï¿½es
 
 	
 	
@@ -60,14 +63,21 @@ public class Simon extends JFrame implements ActionListener{
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent btn) {//btn é o botao que foi apertado no momento
+	public void actionPerformed(ActionEvent btn) {//btn ï¿½ o botao que foi apertado no momento
 		Botao apertado = (Botao) btn.getSource();//faz o action virar um botao
 		//System.out.println(apertado.getCor());
 		
 		//adicionando cores ao array list
+		
 		colors.add(apertado.getCor());
-	
-		System.out.println("-=-=-=-=-=-=-=-=-=-=-=");
+		if (jogadas != jogo.getTamanho())
+		jogadas++;
+		else 
+			if(jogo.Acertou(colors))
+			{
+				JOptionPane.showMessageDialog(null, "VocÃª acertou a ordem!");
+				jogo.reset();
+			}
 		
 		 for (Cor clicados : colors) {//printa todas as cores ja foram apertadas
 				System.out.println(clicados);
