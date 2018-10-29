@@ -11,7 +11,6 @@ public enum Cor {PRETO(0),
 	
 	private int value;
 
-
     private Cor(int value) {
             this.value = value;
     }
