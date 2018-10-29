@@ -54,6 +54,7 @@ public class Simon extends JFrame implements ActionListener{
 		botao[2][0].setCor(Cor.PRETO);
 		botao[2][1].setCor(Cor.BRANCO);
 		botao[2][2].setCor(Cor.AMARELO);
+		jogo = new Tabuleiro(botao);
 		
 		setSize(300,300);
 		setVisible(true);
@@ -72,11 +73,15 @@ public class Simon extends JFrame implements ActionListener{
 		colors.add(apertado.getCor());
 		if (jogadas != jogo.getTamanho())
 		jogadas++;
-		else 
+		else {
 			if(jogo.Acertou(colors))
 			{
 				JOptionPane.showMessageDialog(null, "Você acertou a ordem!");
 				jogo.reset();
+			}
+			else{
+				JOptionPane.showMessageDialog(null, "Você errou a ordem , tente novamente!");
+			}
 			}
 		
 		 for (Cor clicados : colors) {//printa todas as cores ja foram apertadas
