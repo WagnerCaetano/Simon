@@ -49,11 +49,9 @@ public class Simon extends JFrame implements ActionListener{
 		for (int i = 0; i < botao.length; i++) {
 			for (int j = 0; j < botao.length; j++) {
 				botao[i][j] = new Botao();
-				
 				botao[i][j].setCor(cor[numeros.get(contador)]);			
 				add(botao[i][j]);
 				botao[i][j].addActionListener(this);
-				
 				contador++;
 			}
 			
