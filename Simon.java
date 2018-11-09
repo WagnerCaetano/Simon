@@ -5,51 +5,57 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+
 public class Simon extends JFrame implements ActionListener{
 	
 	private Botao[][] botao;//nome da matriz onde ficara os bot�es
-	static ArrayList<Cor> colors = new  ArrayList<>();//criando um array list para guarda as cores sorteadas
-	private Tabuleiro jogo;
+	 ArrayList<Cor> colors = new  ArrayList<Cor>();//criando um array list para guarda as cores sorteadas
+	//private Tabuleiro jogo;
 	private int jogadas;
-	//int igual[];
+	private Cor[] cor;
+	private int contador=0;
+	
 	//para que eu consiga sortear a cor terei q fazer uma 'copia' do enum para acessar 
 	//sua posi��o e seu texto
-	//private Cor cores[] = Cor.values();//copia todas as cores da clase 'Cor' para nas proximas vers�es poder-mos sortear os btn ou as cores.
-	//igual = new int[9];//validacao para nao colocar cores iguais
-	//int diferentes=0;//enche o vetor 
-	//int ultimoValor;
+	
+	
+	
+	
 	//intacia da classe Random para sortear as cores 
-	//Random sortear = new Random();//para sortar numeros int para sortear cores para proximas vers�es
-
+	
+	ArrayList<Integer> numeros = new ArrayList<Integer>();//crio um array para guardar as cores embaralhadas
 	
 	
 	public Simon() {
-		
+		for (int i = 0; i < 10; i++) {//colocando dados no array para pode sortiar sem repitir
+			numeros.add(i);
+		}
 		getContentPane().setLayout(new GridLayout(3, 3));
 		//fazendo um for para adicionar os btns no frame
 		
+		
+	
 		botao = new Botao[3][3];
+		cor = Cor.values();
+		Collections.shuffle(numeros);//embaralha numeros
 		
 		for (int i = 0; i < botao.length; i++) {
 			for (int j = 0; j < botao.length; j++) {
 				botao[i][j] = new Botao();
+				botao[i][j].setCor(cor[numeros.get(contador)]);			
 				add(botao[i][j]);
 				botao[i][j].addActionListener(this);
+				contador++;
 			}
+			
 		}
-		//colocando cores iniciais para os botoes
-		botao[0][0].setCor(Cor.VERDE);
-		botao[0][1].setCor(Cor.AZUL);
-		botao[0][2].setCor(Cor.ROXO);
-		
-		botao[1][0].setCor(Cor.VERMELHO);
-		botao[1][1].setCor(Cor.CINZA);
-		botao[1][2].setCor(Cor.LARANJA);
 		
 		botao[2][0].setCor(Cor.PRETO);
 		botao[2][1].setCor(Cor.BRANCO);
@@ -71,7 +77,7 @@ public class Simon extends JFrame implements ActionListener{
 		//adicionando cores ao array list
 		
 		colors.add(apertado.getCor());
-		if (jogadas != jogo.getTamanho())
+	/*	if (jogadas != jogo.getTamanho())
 		jogadas++;
 		else {
 			if(jogo.Acertou(colors))
@@ -79,11 +85,7 @@ public class Simon extends JFrame implements ActionListener{
 				JOptionPane.showMessageDialog(null, "Você acertou a ordem!");
 				jogo.reset();
 			}
-			else{
-				JOptionPane.showMessageDialog(null, "Você errou a ordem , tente novamente!");
-			}
-			}
-		
+		*/
 		 for (Cor clicados : colors) {//printa todas as cores ja foram apertadas
 				System.out.println(clicados);
 			}
