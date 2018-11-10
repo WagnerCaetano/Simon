@@ -10,7 +10,7 @@ public class Jogo {
     private Cor[] cores;
     private Botao[][] botoes;
     private Cor[] sorteado = new Cor[10];
-    private int tamanho=1;
+    private int tamanho=0;
     Random gen = new Random();
 
     public Jogo(Cor[] simoncores,Botao[][] botoessimon){
@@ -45,9 +45,14 @@ public class Jogo {
     public void aumentarTamanho(){
         tamanho = gen.nextInt(4)+1;
     }
+    public int getTamanho()
+    {
+        return tamanho;
+    }
     public void blinking(Botao button){
         button.setOpaque(true);
         Timer blinkTimer = new Timer(3000, new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 // blink the button background on and off
                 button.setBorder(BorderFactory.createLineBorder(button.getColorb().brighter(),100));
@@ -57,6 +62,7 @@ public class Jogo {
         blinkTimer.start();
 
         Timer unblinkTimer = new Timer(4000, new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 // blink the button background on and off
                 button.setBorder(BorderFactory.createLineBorder(Color.white,10));
@@ -64,5 +70,15 @@ public class Jogo {
         });
         unblinkTimer.setRepeats(false);
         unblinkTimer.start();
+    }
+    public boolean Acertou(Cor[] b)
+    {
+        boolean b1=true;
+        for (int x =0; x<=tamanho ;x++)
+        {
+            if (sorteado[x] != b[x])
+            b1=false;
+        }
+        return b1;
     }
 }
