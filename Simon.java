@@ -26,7 +26,7 @@ public class Simon extends JFrame implements ActionListener{
 	
 	
 	public Simon() {
-		for (int i = 0; i < 10; i++) {//colocando dados no array para pode sortiar sem repitir
+		for (int i = 0; i < 9; i++) {//colocando dados no array para pode sortiar sem repitir
 			numeros.add(i);
 		}
 		getContentPane().setLayout(new GridLayout(3, 3));
@@ -40,7 +40,7 @@ public class Simon extends JFrame implements ActionListener{
 		for (int i = 0; i < botao.length; i++) {
 			for (int j = 0; j < botao.length; j++) {
 				botao[i][j] = new Botao();
-				botao[i][j].setCor(cor[numeros.get(contador)]);			
+				botao[i][j].setCor(cor[numeros.get(contador)]);		
 				add(botao[i][j]);
 				botao[i][j].addActionListener(this);
 				botao[i][j].setBorder(BorderFactory.createLineBorder(Color.white));
@@ -62,9 +62,11 @@ public class Simon extends JFrame implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent btn) {//btn � o botao que foi apertado no momento
-		Botao apertado = (Botao) btn.getSource();//faz o action virar um botao
+		//Botao apertado = (Botao) btn.getSource();//faz o action virar um botao
 		
-		colors.add(apertado.getCor());
+		//colors.add(apertado.getCor());
+		game.MostrarOrdem();
+
 	/*	if (jogadas != jogo.getTamanho())
 		jogadas++;
 		else {

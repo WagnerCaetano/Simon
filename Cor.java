@@ -6,8 +6,7 @@ public enum Cor {PRETO(0),
 				LARANJA(5),
 				VERDE(6),
 				CINZA(7),
-				ROXO(8),
-				EMPTY(10);
+				ROXO(8);
 	
 	private int value;
 
@@ -15,10 +14,20 @@ public enum Cor {PRETO(0),
             this.value = value;
     }
     
-    public int getValue() { return value; }
-    
-    
-    
-    
-	 
+	public int getValue() { return value; }
+
+
+	/*
+	public int CompareTo(Funcionario outro)
+    {
+      if (this.matricula < outro.matricula)
+        return -1;                    // resultado negativo
+
+      if (this.matricula == outro.matricula)
+        return 0;                     // resultado neutro
+
+      return 1;                       // resultado positivo
+    }
+	
+	*/ 
 }

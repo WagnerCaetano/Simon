@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.BorderFactory;
 import java.awt.event.*;
+import java.sql.Time;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
@@ -8,46 +9,54 @@ import java.util.Random;
 public class Jogo {
     private Cor[] cores;
     private Botao[][] botoes;
-    private Cor[] sorteado = new Cor[100];
+    private Cor[] sorteado = new Cor[10];
     private int tamanho=1;
+    Random gen = new Random();
 
     public Jogo(Cor[] simoncores,Botao[][] botoessimon){
         this.cores = simoncores;
         this.botoes = botoessimon;
     }
     public void MostrarOrdem(){
-        /*System.out.println(botoes.length+"");
-        int x1 , y;
-        Random gen = new Random();
-        for(int x =0 ; x <tamanho;x++){
-        sorteado[x] = cores[gen.nextInt(10)];
-        for( x1 = 0 , y =0 ; x1<botoes.length && y <botoes.length ;x++,y++){
-        if(botoes[x1][y].getCor() == sorteado[x])
-        break;
-        }
-        blinking(botoes[x1][y]);
-        botoes[x1][y].repaint();
-    }
-        aumentarTamanho();*/
-        blinking(botoes[0][0]);
-        botoes[0][0].setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        int x1=0 , y=0;
+        for(int x =0 ; x <=tamanho;x++){
+        sorteado[x] = cores[gen.nextInt(9)];
+        if (x>=1)
+        if (sorteado[x-1] != sorteado[x]){}
+        else sorteado[x] = cores[gen.nextInt(9)];
+        System.out.println(sorteado[x]);}
 
+        for (int x = 0;x<=tamanho ;x++){
+            for (x1 = 0 ; x1<botoes.length ; x1++){
+                for (y =0 ; y<botoes.length;y++){
+                    if (botoes[x1][y].getCor().equals(sorteado[x])){
+                        try{
+                            new Thread().sleep(1000);
+                            }
+                        catch(InterruptedException e){}
+                        blinking(botoes[x1][y]);
+                    }                    
+                }
+            }
+        }
+
+        aumentarTamanho();
     }
     public void aumentarTamanho(){
-        tamanho+=tamanho;
+        tamanho = gen.nextInt(4)+1;
     }
     public void blinking(Botao button){
         button.setOpaque(true);
-        Timer blinkTimer = new Timer(500, new ActionListener() {
+        Timer blinkTimer = new Timer(3000, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // blink the button background on and off
-                button.setBorder(BorderFactory.createLineBorder(Color.red,5));
+                button.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,5));
             }
         });
         blinkTimer.setRepeats(false);
         blinkTimer.start();
 
-        Timer unblinkTimer = new Timer(1000, new ActionListener() {
+        Timer unblinkTimer = new Timer(4000, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // blink the button background on and off
                 button.setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -55,6 +64,5 @@ public class Jogo {
         });
         unblinkTimer.setRepeats(false);
         unblinkTimer.start();
-        
     }
 }

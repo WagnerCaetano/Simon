@@ -21,7 +21,7 @@ public void setCor(Cor e)
 public Botao()
 {
     super();
-    cores = Cor.EMPTY;
+    cores = Cor.PRETO;
 }
 
 public Dimension getMaximumSize()
@@ -54,7 +54,6 @@ protected void paintComponent(Graphics g)
         case ROXO: e.setColor(Color.PINK); break;
         case BRANCO: e.setColor(Color.WHITE); break;
         case PRETO: e.setColor(Color.BLACK); break;
-        case EMPTY: e.setColor(Color.lightGray);break;
     }
     e.fillRect(0, 0, tamanho, tamanho);
     }
