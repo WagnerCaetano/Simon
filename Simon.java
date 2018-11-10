@@ -27,6 +27,7 @@ public class Simon extends JFrame implements ActionListener{
 	
 	
 	public Simon() {
+		super("SIMON 1.6");
 		for (int i = 0; i < 9; i++) {//colocando dados no array para pode sortiar sem repitir
 			numeros.add(i);
 		}
@@ -80,7 +81,7 @@ public class Simon extends JFrame implements ActionListener{
 		 for (Cor clicados : colors) {//printa todas as cores ja foram apertadas
 				System.out.println(clicados);
 		 }*/
-	}	
+		}
 	public static void main(String[] args) {
 		new Simon();
 		
