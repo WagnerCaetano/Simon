@@ -5,7 +5,6 @@ import java.awt.event.*;
 class Botao extends JButton{
 
 private Cor cores;
-private boolean blink = false;
 private static int tamanho = 100;
 
 
@@ -23,11 +22,6 @@ public Botao()
 {
     super();
     cores = Cor.EMPTY;
-}
-public void Piscar(){
-    blink = true;
-    repaint();
-    blink=false;
 }
 
 public Dimension getMaximumSize()
@@ -60,9 +54,7 @@ protected void paintComponent(Graphics g)
         case ROXO: e.setColor(Color.PINK); break;
         case BRANCO: e.setColor(Color.WHITE); break;
         case PRETO: e.setColor(Color.BLACK); break;
-    }
-    if(blink){
-        e.setColor(e.getColor().brighter());
+        case EMPTY: e.setColor(Color.lightGray);break;
     }
     e.fillRect(0, 0, tamanho, tamanho);
     }

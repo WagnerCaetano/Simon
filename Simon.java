@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.GridLayout;
 
 import java.awt.event.ActionEvent;
@@ -9,6 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -41,6 +43,8 @@ public class Simon extends JFrame implements ActionListener{
 				botao[i][j].setCor(cor[numeros.get(contador)]);			
 				add(botao[i][j]);
 				botao[i][j].addActionListener(this);
+				botao[i][j].setBorder(BorderFactory.createLineBorder(Color.white));
+				botao[i][j].setBorderPainted(true);
 				contador++;
 			}
 			
@@ -69,12 +73,11 @@ public class Simon extends JFrame implements ActionListener{
 				JOptionPane.showMessageDialog(null, "Você acertou a ordem!");
 				jogo.reset();
 			}
-		*/
+		/*
 		 for (Cor clicados : colors) {//printa todas as cores ja foram apertadas
 				System.out.println(clicados);
-			}*/
-	}
-	
+		 }*/
+	}	
 	public static void main(String[] args) {
 		new Simon();
 		

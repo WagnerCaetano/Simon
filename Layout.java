@@ -2,13 +2,13 @@ import javax.swing.JFrame;
 
 
 import javafx.scene.layout.Border;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 
 import javax.swing.AbstractButton;
 import javax.swing.Icon;
@@ -19,22 +19,11 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 
-public class Layout extends JFrame {
+public class Layout extends JFrame implements ActionListener{
 	
 	public Layout() {
 	super("SIMON");
-	
-	}
-	JButton[] button;
-	JLabel lblTitulo,img;
-	
-	//private Image image;
-	//Icon img = new ImageIcon(getClass().getResource("simonimg.jpg"));
-	//import of components for using
-	
-	public void Tela() {
-		
-		getContentPane().setLayout(null);
+	getContentPane().setLayout(null);
 		setSize(400,400);
 		setLocation(500, 500);
 		
@@ -58,10 +47,11 @@ public class Layout extends JFrame {
 		button[0].setBounds(100, 113, 200, 40);
 		button[0].setText("JOGAR");
 		getContentPane().add(button[0]);
+		button[0].addActionListener(this);
 		
 		//configura e cria o segundo btn
 		button[1].setBounds(100,206, 200, 40);
-		button[1].setText("INSTRUÇÕES");
+		button[1].setText("INSTRUï¿½ï¿½ES");
 		getContentPane().add(button[1]);
 		
 		//configura e cria o terceiro btn
@@ -73,12 +63,21 @@ public class Layout extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
-		
+	
 	}
+	JButton[] button;
+	JLabel lblTitulo,img;
+	
+	public void actionPerformed(ActionEvent e) {//btn ï¿½ o botao que foi apertado no momento
+		Simon.main(new String[0]);
+	}	
+	//private Image image;
+	//Icon img = new ImageIcon(getClass().getResource("simonimg.jpg"));
+	//import of components for using
 	
 
 	public static void main(String[] args) {
 		
-		new Layout().Tela();
+		new Layout();
 	}
 }
