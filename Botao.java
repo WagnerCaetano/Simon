@@ -5,12 +5,16 @@ import java.awt.event.*;
 class Botao extends JButton{
 
 private Cor cores;
-private static int tamanho = 100;
+private static int tamanho = 200;
 
 
 public Cor getCor()
 {
     return this.cores;
+}
+public Color getColorb()
+{
+    return cores.getColor();
 }
 
 public void setCor(Cor e)
@@ -43,18 +47,8 @@ protected void paintComponent(Graphics g)
 {
     super.paintComponent(g);
     Graphics2D e = (Graphics2D)g;
-    switch(cores)
-    {
-        case AZUL: e.setColor(Color.BLUE); break;
-        case VERMELHO: e.setColor(Color.RED); break;
-        case AMARELO: e.setColor(Color.YELLOW); break;
-        case LARANJA: e.setColor(Color.ORANGE); break;
-        case VERDE: e.setColor(Color.GREEN); break;
-        case CINZA: e.setColor(Color.GRAY); break;
-        case ROXO: e.setColor(Color.PINK); break;
-        case BRANCO: e.setColor(Color.WHITE); break;
-        case PRETO: e.setColor(Color.BLACK); break;
-    }
+
+    e.setColor(cores.getColor(cores));
     e.fillRect(0, 0, tamanho, tamanho);
     }
 }

@@ -50,7 +50,7 @@ public class Jogo {
         Timer blinkTimer = new Timer(3000, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // blink the button background on and off
-                button.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,5));
+                button.setBorder(BorderFactory.createLineBorder(button.getColorb().brighter(),100));
             }
         });
         blinkTimer.setRepeats(false);
@@ -59,7 +59,7 @@ public class Jogo {
         Timer unblinkTimer = new Timer(4000, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // blink the button background on and off
-                button.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+                button.setBorder(BorderFactory.createLineBorder(Color.white,10));
             }
         });
         unblinkTimer.setRepeats(false);

@@ -1,4 +1,5 @@
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 
@@ -43,7 +44,7 @@ public class Simon extends JFrame implements ActionListener{
 				botao[i][j].setCor(cor[numeros.get(contador)]);		
 				add(botao[i][j]);
 				botao[i][j].addActionListener(this);
-				botao[i][j].setBorder(BorderFactory.createLineBorder(Color.white));
+				botao[i][j].setBorder(BorderFactory.createLineBorder(Color.white,10));
 				botao[i][j].setBorderPainted(true);
 				contador++;
 			}
@@ -55,7 +56,7 @@ public class Simon extends JFrame implements ActionListener{
 		botao[2][1].setCor(Cor.BRANCO);
 		botao[2][2].setCor(Cor.AMARELO);*/
 		
-		setSize(300,300);
+		setSize(600,600);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
