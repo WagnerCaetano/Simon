@@ -16,6 +16,7 @@ public class Jogo {
 	Random gen = new Random();
 
 	public Jogo(Cor[] simoncores,Botao[][] botoessimon){
+		Contador.contador=0;
 		this.cores = simoncores;
 		this.botoes = botoessimon;
 		coreSorteadas = new ArrayList<>();

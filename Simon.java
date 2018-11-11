@@ -84,7 +84,10 @@ public class Simon extends JFrame implements ActionListener{
 				
 			}			
 			else {
+				JOptionPane.showMessageDialog(null,"Potuação: "+totalJogadas);
 				JOptionPane.showMessageDialog(null,"GAME OVER");
+				setVisible(false);
+				new Layout().setVisible(true);;
 			}
 		}
 		totalJogadas++;
@@ -93,10 +96,6 @@ public class Simon extends JFrame implements ActionListener{
 		
 		
 	}	
-	public static void main(String[] args) {
-		new Simon();
-		
-		
-	}
+
 
 }
