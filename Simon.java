@@ -70,7 +70,7 @@ public class Simon extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent btn) {
 		
 		Botao botao1 = (Botao) btn.getSource();
-			if (colors.length <=game.getTamanho())
+			if (X <=game.getTamanho())
 			{
 				colors[X] = botao1.getCor();
 				X++;
