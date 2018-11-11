@@ -50,6 +50,7 @@ public class Simon extends JFrame implements ActionListener{
 				botao[i][j].addActionListener(this);
 				botao[i][j].setBorder(BorderFactory.createLineBorder(Color.white,10));
 				botao[i][j].setBorderPainted(true);
+				botao[i][j].setNomeDoAudio(contador+1+"");
 				contador++;
 			}
 			
@@ -72,6 +73,7 @@ public class Simon extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent btn) {//btn � o botao que foi apertado no momento
 		Botao apertado = (Botao) btn.getSource();//faz o action virar um botao
+		apertado.play();
 		colors.add(apertado.getCor());
 		
 		if(coresSorteadas.size() <= totalJogadas) {
