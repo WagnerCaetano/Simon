@@ -25,7 +25,7 @@ public class Simon extends JFrame implements ActionListener{
 	private Botao[][] botao;//nome da matriz onde ficara os botï¿½es
 	ArrayList<Cor> colors = new  ArrayList<Cor>();//criando um array list para guarda as cores sorteadas
 	private Cor[] cor;
-	private int contador=0;
+	private int contador=0;	
 	Jogo game;
 	ArrayList<Integer> numeros = new ArrayList<Integer>();//crio um array para guardar as cores embaralhadas
 	ArrayList<Cor> coresSorteadas;
