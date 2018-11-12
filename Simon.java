@@ -1,7 +1,6 @@
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.GridLayout;
 
 import java.awt.event.ActionEvent;
@@ -14,31 +13,30 @@ import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
+
+
 
 
 public class Simon extends JFrame implements ActionListener{
 	
-	private Botao[][] botao;//nome da matriz onde ficara os bot�es
-	private Cor[] colors = new Cor[10];//criando um array list para guarda as cores sorteadas
+	private Botao[][] botao;//nome da matriz onde ficara os botï¿½es
+	ArrayList<Cor> colors = new  ArrayList<Cor>();//criando um array list para guarda as cores sorteadas
 	private Cor[] cor;
 	private int contador=0;
-	private Jogo game;
-	private ArrayList<Integer> numeros = new ArrayList<Integer>();//crio um array para guardar as cores embaralhadas
-	private int pontos;
-	private JLabel lblpontos = new JLabel();
-	private int X =0;
-	
+	Jogo game;
+	ArrayList<Integer> numeros = new ArrayList<Integer>();//crio um array para guardar as cores embaralhadas
+	ArrayList<Cor> coresSorteadas;
+	int totalJogadas = 1;
 	public Simon() {
-		super("SIMON 1.6");
 		for (int i = 0; i < 9; i++) {//colocando dados no array para pode sortiar sem repitir
 			numeros.add(i);
 		}
-		getContentPane().setLayout(new GridLayout(4, 3));
+		getContentPane().setLayout(new GridLayout(3, 3));
 		//fazendo um for para adicionar os btns no frame
-		lblpontos.setFont(new Font("Serif", Font.BOLD, 12));
-		lblpontos.setText("Pontos: " + pontos);
+		
 		
 		botao = new Botao[3][3];
 		cor = Cor.values();
@@ -56,39 +54,49 @@ public class Simon extends JFrame implements ActionListener{
 			}
 			
 		}
-		add(lblpontos);
 		game=new Jogo(cor,botao);
-		game.MostrarOrdem();
+		coresSorteadas = new ArrayList<Cor>();
+		coresSorteadas = game.MostrarOrdem();
 		
 		
-		setSize(600,800);
+		setSize(420,420);
+		setLocationRelativeTo(null);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-	}
-	
-	@Override
-	public void actionPerformed(ActionEvent btn) {
 		
-		Botao botao1 = (Botao) btn.getSource();
-			if (X <=game.getTamanho())
-			{
-				colors[X] = botao1.getCor();
-				X++;
-			}
-			else{
-				if (game.Acertou(colors)){
-						pontos++;
-						game.MostrarOrdem();
-				}
-					else pontos =0 ;
-					lblpontos.setText("Pontos: " + pontos+"tste");
-				}
 
 	}
-	public static void main(String[] args) {
-		new Simon();
+		
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent btn) {//btn ï¿½ o botao que foi apertado no momento
+		Botao apertado = (Botao) btn.getSource();//faz o action virar um botao
+		colors.add(apertado.getCor());
+		SoundClick.Beat();
+		
+		if(coresSorteadas.size() <= totalJogadas) {
+			if(coresSorteadas.equals(colors)) {
+				System.out.println("Acertei");
+				colors.clear();
+				coresSorteadas.clear();
+				totalJogadas=0;
+				coresSorteadas = game.MostrarOrdem();
+				
+			}			
+			else {
+				JOptionPane.showMessageDialog(null,"Potuação: "+totalJogadas);
+				JOptionPane.showMessageDialog(null,"GAME OVER");
+				setVisible(false);
+				new Layout().setVisible(true);;
+			}
+		}
+		totalJogadas++;
+	
 		
 		
-	}
+		
+	}	
+
 
 }
