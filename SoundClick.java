@@ -7,7 +7,7 @@ public class SoundClick{
     public static void Beat(){
     try {
          // Open an audio input stream.           
-          File soundFile = new File("E:\\\\github repository\\\\Simon\\\\SOUND.wav"); //you could also get the sound file with an URL
+          File soundFile = new File("C:\\Users\\u18300\\Documents\\GitHub\\Simon\\SOUND.wav"); //you could also get the sound file with an URL
           AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
          // Get a sound clip resource.
          Clip clip = AudioSystem.getClip();
@@ -25,7 +25,7 @@ public class SoundClick{
    public static void BeatShowing(){
     try {
          // Open an audio input stream.           
-          File soundFile = new File("E:\\\\github repository\\\\Simon\\\\SHOWING.wav"); //you could also get the sound file with an URL
+          File soundFile = new File("C:\\Users\\u18300\\Documents\\GitHub\\Simon\\SHOWING.wav"); //you could also get the sound file with an URL
           AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
          // Get a sound clip resource.
          Clip clip = AudioSystem.getClip();
