@@ -38,7 +38,7 @@ public class Jogo {
 				for (y =0 ; y<botoes.length;y++){
 					if (botoes[x1][y].getCor().equals(sorteado[x])){
 						try{
-							new Thread().sleep(1000);
+							new Thread().sleep(500);
 						}
 						catch(InterruptedException e){}
 						blinking(botoes[x1][y]);
@@ -56,7 +56,7 @@ public class Jogo {
 	}
 	public void blinking(Botao button){
 		button.setOpaque(true);
-		Timer blinkTimer = new Timer(3000, new ActionListener() {
+		Timer blinkTimer = new Timer(1500, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// blink the button background on and off
 				button.setBorder(BorderFactory.createLineBorder(button.getColorb().brighter(),100));
@@ -66,7 +66,7 @@ public class Jogo {
 		blinkTimer.setRepeats(false);
 		blinkTimer.start();
 
-		Timer unblinkTimer = new Timer(4000, new ActionListener() {
+		Timer unblinkTimer = new Timer(2000, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// blink the button background on and off
 				button.setBorder(BorderFactory.createLineBorder(Color.white,10));
