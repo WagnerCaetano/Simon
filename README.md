@@ -1,4 +1,3 @@
 # Simon
 
-Estou fazendo a classe main.
-porém não quero que as cores dos btns se repitam, amanhã eu termino essa parte
+This is a repository about a simple game of memory made for school purpose
